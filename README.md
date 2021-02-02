@@ -10,7 +10,7 @@ str(umu.oto)
 umu.oto$root.number.ha <- (umu.oto$root.number.counting*10 / 8)
 umu.oto$log.root.number.ha <-log(umu.oto$root.number.ha)
 
-# adding new column for prop harvested to the complete data
+###New column for prop harvested to the complete data
 umu.oto$prophav <- ((umu.oto$plant.stands.harvested/8)*100)
 umu.oto$log.fry<-log(umu.oto$fry)
 umu.oto$log.root.number.counting<-log(umu.oto$root.number.counting)
@@ -23,14 +23,17 @@ hist(umu.oto$starch)
 hist(umu.oto$log.root.number.counting)
 
 
-boxplot( dmc.spg~location, data=umu.oto,  ylab = "DMC (%)", main="Dry matter by specific gravity method")
+boxplot(dmc.spg~location, data=umu.oto,  ylab = "DMC (%)", main="Dry matter by specific gravity method")
 
-boxplot( starch~location, data=umu.oto,  ylab = "starch (%)", main="starch by specific gravity method")
+boxplot(starch~location, data=umu.oto,  ylab = "starch (%)", main="starch by specific gravity method")
+
 boxplot( DMc.oven~location, data=umu.oto, ylab = "DMC (%)", main="Dry matter by oven dry method")
+
 boxplot( umu.oto$log.fry~location, data=umu.oto, ylab = "log fRY", main=" log of Yield (tonnes/ha")
+
 boxplot( umu.oto$log.root.number.counting~location, data=umu.oto, ylab = "number of root", main="log of Yield (tonnes/ha")
 
-#using lmer to fix the mixed model for dmc oven dry and by specific gravity method using studentized residual to remove the outliers
+###using lmer to fix the mixed model for dmc oven dry and by specific gravity method using studentized residual to remove the outliers
 
 library(lme4)
 fit.dmc.ov <- lmer(DMc.oven ~  (1 | accession_name)+location + rep_number:location  + (1 | block_number:location) +  (1|accession_name:location), data=umu.oto)
