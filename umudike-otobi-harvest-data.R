@@ -1,5 +1,5 @@
 umu.oto<-read.csv("/Users/chinedoziamaefula/OneDrive - Cornell University/2020 Data/2020.umu.otobi.combine.harvestdata.csv")
-
+#This a the harvest data for umudike and otobi containing dmc by oven dry and specific gravity menthod.
 umu.oto$rep_number<-as.factor(umu.oto$rep_number)
 umu.oto$block_number <-as.factor(umu.oto$block_number )
 umu.oto$location<-as.factor(umu.oto$location)
